@@ -1,0 +1,9 @@
+<h1>These are the boxes for <%= @customer_name %></h1><br><br><br>
+
+<table width = 65% border = 1>
+    <tr><th>Box</th></tr>
+    <% @box_list.each do |m| %>
+    
+    <tr><td> <%= m.box_id %></td></tr>
+    <% end %> 
+</table>

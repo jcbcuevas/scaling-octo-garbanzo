@@ -1,0 +1,12 @@
+<h1>Please enter a customer's last name</h1>
+<%= form_tag(showcustomerboxes_boxesout_path, :controller => "showcustomerboxes", :action => "boxesout", :method => "post") do %>
+
+<div class="field">
+    <%= label_tag :Customer_Name %><br>
+        <%= text_field_tag :customer_name_in %>
+        
+</div>
+<div class="actions">
+    <%= submit_tag "Submit Customer Name" %>
+</div>
+    <% end %>

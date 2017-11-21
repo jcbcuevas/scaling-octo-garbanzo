@@ -1,0 +1,61 @@
+<script src="../_js/jquery-1.7.2.min.js"></script>
+<script>
+$(document).ready(function() { 
+outtoConfirm = function()
+{
+$('body').css('background-color','#ccbadc');
+
+$('h1').after('<center> <h2> Check all data. Make changes if necessary. Then hit the <b>"Submit"</b> button </h2></center>');
+var titlein, contentin, pricein; 
+titlein = $('#box_title').val();
+contentin = $('#box_content').val();
+pricein= $('#box_price').val();
+
+$('#box_title').css('background-color', 'yellow');
+$('#box_title').val(titlein);
+$('#box_content').css('background-color', 'yellow');
+$('#box_content').val(contentin); 
+$('#box_price').css('background-color', 'yellow');
+$('#box_price').val(pricein);
+$('#box_price').after('<p><input name="submitButton" type="submit" id="submission" value="Submit Confirmed Data" length = 20> </p>');
+$('#confirmButton').remove();
+$('#submission').hover(function()
+{ 
+$(this).css('background-color', '#ccbadc') 
+
+
+}); //end 
+}
+$('#confirmButton').click(outtoConfirm); 
+}); //end ready
+</script>
+
+
+</script>
+<%= form_for(@box) do |f| %>
+  <% if @box.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@box.errors.count, "error") %> prohibited this box from being saved:</h2>
+
+      <ul>
+      <% @box.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <input name="submitButton" type="submit" id="confirmButton" value="Submit Data" length = 20> </p>
+<% end %>
